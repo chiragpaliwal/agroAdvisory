@@ -4,20 +4,23 @@ import base, { firebaseApp } from "../base";
 
 export default class Login extends Component {
 	state = {
+    otp: false,
 	}
 
-	phoneRef = React.createRef();
+  phoneRef = React.createRef();
+  otpRef = React.createRef();
 
-	componentDidMount = () => {
-		
-	}
-
+  otpInput = (<div className="group"><input className="input" type="number" placeholder="OTP" ref={this.otpRef}/></div>);
+  
 	auth = (event) => {
 		event.preventDefault();
 		firebase.auth().useDeviceLanguage();
 		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-		const appVerifier = window.recaptchaVerifier;
-		
+    const appVerifier = window.recaptchaVerifier;
+
+    
+    this.otpRef.current.style.display = 'block';
+
 		firebase.auth().signInWithPhoneNumber(this.phoneRef.current.value, appVerifier)
     .then(function (confirmationResult) {
       // SMS sent. Prompt user to type the code from the message, then sign the
@@ -27,10 +30,11 @@ export default class Login extends Component {
       // Error; SMS not sent
       // ...
     });
-		console.log(this.phoneRef.current.value);
-	}
-
+  }
+  
+  
 	render() {
+
     return (
 			<div className="container">
         <div className="container__child signup__thumbnail">
@@ -51,15 +55,20 @@ export default class Login extends Component {
                 <div className="sign-in-htm">
                   <div className="group">
                     <label htmlFor="user" className="label">Phone Number</label>
-                    <input id="user" ref={this.phoneRef} type="text" className="input" />
+                    <input id="user" ref={this.phoneRef} type="number" placeholder="Phone Number" className="input" />
                   </div>
-                  <div className="group">
+                  {/* <div className="group">
                     <input id="check" type="checkbox" className="check" defaultChecked />
                     <label htmlFor="check"><span className="icon" /> Keep me Signed in</label>
-                  </div>
-									<div id="recaptcha-container">
+                  </div> */}
+									<div id="recaptcha-container" className="group">
 
 									</div>
+
+                  <div className="group">
+                    <input className="input" style={{display: 'none'}} type="number" placeholder="OTP" ref={this.otpRef}/>
+                  </div>
+
                   <div className="group">
                     <input type="submit" onClick={this.auth} value="Sign In" className="button" />
                   </div>
