@@ -26,6 +26,9 @@ mongoose
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
+// Serve Static files
+app.use(express.static('assets'));
+
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
 

@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+body {
+    font-family: Comfortaa, sans-serif;
+    overflow: hidden;
+    background: #35A7FF;
+}
+
+.logincontainer {
+    height: 70%;
+    width: 80%;
+    min-height: 400px;
+    max-width: 330px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: #000 2px 4px 10px 0.1px;
+}
+
+.logincontainer form {
+    margin-top: 4em;
+    text-align: center;
+}
+
+.logincontainer form input {
+    display: block;
+    padding: 0.6em 0.2em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    background: #E8E8E8;
+    border-color: transparent;
+    font-size: 1em;
+}
+
+.logincontainer form button {
+    background: #6BF178;
+    padding: 1em;
+    border-radius: 0.2em;
+    border: transparent;
+}
+
+.logincontainer div {
+    margin: 1em 0;
+    text-align: center;
+}
+
+.logincontainer div button {
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0.6em 0.4em;
+    color: white;
+    border: transparent;
+    border-radius: 0.2em;
+    background: #35A7FF;
+}
+
+.logincontainer div button i {
+    margin-right: 1em;
+    font-size: 1.4em;
+}
+
+#signupform {
+    display: none;
+}
+
+.sociallogin {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.tabs {
+    position: absolute;
+    display: flex;
+    width: 100vw;
+    bottom: 0;
+    left: 0;
+    font-size: 1.4em;
+    border-top: 1px solid black;
+}
+
+.tabs div {
+    border-right: 1px solid black;
+    text-align: center;
+    width: 33.33%;
+    cursor: pointer;
+    padding: 1em 0;
+}
+
+.tabs div:hover {
+    background: #6BF178;
+}
+
+.profiletop .pic img{
+    height: 120px;
+    width: 110px;
+    border-radius: 50%:
+}
+.profiletop{
+    margin-top: 2em;
+    padding-bottom: 1em;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    border-bottom: 1px solid #E8E8E8;
+}
+.profiletop div{
+    justify-self: center;
+
+}
+.profiletop .info span{
+    display: block;
+}
