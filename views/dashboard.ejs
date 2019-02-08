@@ -1,21 +1,66 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= user.name %></p>
+<!-- <h1 class="mt-4">Dashboard</h1> -->
+<!-- <p class="lead mb-3">Welcome </p> -->
+<div class="home">
+    <div class="cardcontainer">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+
+<div class="crops">
+    <div class="search">
+        <input type="text" placeholder="search">
+        <button type="submit">go</button>
+    </div>
+    <div class="cropcards">
+        <div>
+            <span>
+                <h2>Wheat</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </span>
+            <span>    
+                <img src="https://5.imimg.com/data5/QW/SD/MY-17256771/wheat-m-p-500x500.jpg" alt="">
+            </span>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
 <div class="profile">
     <div class="profiletop">
         <div class="pic">
             <img src="https://microhealth.com/assets/images/illustrations/personal-user-illustration-@2x.png" alt="">
         </div>
         <div class="info">
-            <span>User Name</span>
+            <span><%= user.name %></span>
             <span>Location</span>
             <span>info</span>
+        </div>
+    </div>
+    <div class="profilebottom">
+        <div class="pcroplist">
+            <p>My Crops</p>
+            <ul>
+                <li>crop1</li>
+                <li>crop2</li>
+                <li>crop3</li>
+                <li>crop4</li>
+                <li>crop5</li>
+                <li>crop6</li>
+            </ul>
         </div>
     </div>
 </div>
 
 <div class="tabs">
-    <div>Home</div>
-    <div>Crops</div>
-    <div>Profile</div>
+    <div id="tohome">Home</div>
+    <div id="tocrops">Crops</div>
+    <div id="toprofile" class="tabactive">Profile</div>
 </div>
 <a href="/users/logout" class="btn btn-secondary">Logout</a>

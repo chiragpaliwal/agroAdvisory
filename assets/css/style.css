@@ -81,19 +81,38 @@ body {
     bottom: 0;
     left: 0;
     font-size: 1.4em;
-    border-top: 1px solid black;
+    box-shadow: #000 0px -0.8px 5px 0.1px;
+    /* border-top: 1px solid #E8E8E8; */
 }
 
 .tabs div {
-    border-right: 1px solid black;
-    text-align: center;
     width: 33.33%;
+    padding: 0.8em 0;
+    color: #eee;
+    text-align: center;
     cursor: pointer;
-    padding: 1em 0;
+    border-bottom: 0.2em solid transparent;
 }
 
-.tabs div:hover {
+div.tabactive {
     background: #6BF178;
+    color: #000;
+    border-color: #FF8484;
+}
+
+.profile{
+    background: #E8E8E8;
+    /* color: #eee; */
+}
+.profiletop{
+    font-weight: bold;
+    letter-spacing: 1.4px;
+    margin-top: 2em;
+    padding: 1em;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    border-bottom: 1px solid #E8E8E8;
 }
 
 .profiletop .pic img{
@@ -101,18 +120,68 @@ body {
     width: 110px;
     border-radius: 50%:
 }
-.profiletop{
-    margin-top: 2em;
-    padding-bottom: 1em;
-    display: grid;
-    align-items: center;
-    grid-template-columns: 50% 50%;
-    border-bottom: 1px solid #E8E8E8;
-}
 .profiletop div{
     justify-self: center;
-
+    
 }
 .profiletop .info span{
     display: block;
+}
+
+.profilebottom{
+    background: #6BF178;
+    color: white;
+}
+.pcroplist p{
+    padding: 1.1em;
+    background: #54545433;
+}
+.pcroplist ul{
+    list-style: none;
+}
+.pcroplist ul li{
+    padding: 1em;
+    color: white;
+}
+
+.crops,.home{
+    display: none;
+}
+
+.search{
+    margin-top: 1.2em;
+    text-align: center;
+}
+.search input,button{
+    border:transparent;
+    padding: 0.6em;
+    border-radius: 0.4em;
+}
+
+.cropcards{
+    margin-top: 1em;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-rows:repeat(auto-fit(minmax(260px,1fr))); 
+}
+.cropcards div{
+    padding: 1em;
+    border-radius: 0.4em;
+    background: linear-gradient(#D5E68D,#6BF178);
+    display: flex;
+    justify-content: space-around;
+}
+.cropcards div h2{
+    letter-spacing: 1px;
+    color:whitesmoke;
+}
+.cropcards div p{
+    opacity: 0.6;
+    font-size: 0.8em;
+}
+.cropcards div img{
+    height: 80px;
+    width: 100px;
+    float: left;
+    border-radius: 0.4em;
 }
