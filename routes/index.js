@@ -4,11 +4,11 @@ const { ensureAuthenticated } = require('../config/auth');
 const Crop = require('../models/Crop');
 
 // Fetch crop data
-// getCropData = () => {
+// getCropData = async () => {
 //   Crop.find().then(data => {
 //     const cropData = data;
     
-//     console.log(cropData);
+//     // console.log(cropData);
 //     return cropData;
 //   });
 // }
@@ -17,7 +17,7 @@ const Crop = require('../models/Crop');
 router.get('/', (req, res) => res.render('welcome'));
 
 // Dashboard
-router.get('/dashboard', ensureAuthenticated, (req, res) =>{
+router.get('/dashboard', ensureAuthenticated, async (req, res) => {
 // Crop.find().then(data => {
 //   const cropData = data;
 //   res.render('dashboard', {
@@ -30,12 +30,10 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>{
   //   if (err) console.error(err);
   //   else return data;
   // })
-  // let test = getCropData();
   //  console.log(cropData);
-  let test = Crop.find({});
-  console.log(test);
-res.render('dashboard', {
+  res.render('dashboard', {
     user: req.user,
+    cropData: await Crop.find()
   });
 
 });
