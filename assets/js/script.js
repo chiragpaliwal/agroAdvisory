@@ -13,11 +13,19 @@ $(".tabs>div").click(function () {
 });
 
 $("#tocrops").click(function () {
-    $(".profile").fadeToggle("fast");
-    $(".crops").delay(200).fadeToggle();
+    $(".profile").fadeOut("fast");
+    $(".home").fadeOut("fast");
+    $(".crops").delay(200).fadeIn();
 });
 
 $("#toprofile").click(function () {
-    $(".crops").fadeToggle("fast");
-    $(".profile").delay(200).fadeToggle();
+    $(".home").fadeOut("fast");
+    $(".crops").fadeOut("fast");
+    $(".profile").delay(200).fadeIn();
+});
+
+$("#tohome").click(function () {
+    $(".profile").fadeOut("fast");    
+    $(".crops").fadeOut("fast");
+    $(".home").delay(200).fadeIn();
 });

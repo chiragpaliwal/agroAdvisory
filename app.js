@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
-
 const app = express();
+const Crop = require('./models/Crop');
+const cropData = null;
 
 // Passport Config
 require('./config/passport')(passport);
@@ -44,6 +45,11 @@ app.use(
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Fetch crop data
+Crop.find().then(data => {
+  const cropData = data;
+});
 
 // Connect flash
 app.use(flash());

@@ -75,12 +75,13 @@ body {
 }
 
 .tabs {
-    position: absolute;
+    position: fixed;
     display: flex;
     width: 100vw;
     bottom: 0;
     left: 0;
     font-size: 1.4em;
+    background: #35A7FF;
     box-shadow: #000 0px -0.8px 5px 0.1px;
     /* border-top: 1px solid #E8E8E8; */
 }
@@ -99,7 +100,6 @@ div.tabactive {
     color: #000;
     border-color: #FF8484;
 }
-
 .profile{
     background: #E8E8E8;
     /* color: #eee; */
@@ -184,4 +184,27 @@ div.tabactive {
     width: 100px;
     float: left;
     border-radius: 0.4em;
+}
+.cropcards div span:nth-of-type(2){
+    text-align: center;
+}
+.cropcards div span button{
+    margin: 1em 0 0 0;
+}
+.home,.crops,.profile{
+    max-height: 78vh;
+}
+.cropcards,.profilebottom{
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.homecards{
+    display: flex;
+    flex-direction: column;
+}
+.homecards div{
+    margin: 1em;
+    padding: 1em;
+    border-radius: 0.6em;
+    background: #eee;
 }
