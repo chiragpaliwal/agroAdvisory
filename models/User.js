@@ -34,6 +34,14 @@ UserSchema.statics.addCrop = async function (id, args) {
   const result = Promise.all([crop.save(),user.save()]);
   return result;
 };
+UserSchema.statics.removeCrop = async function (id,args){
+  const Crop = mongoose.model('Crop');
+  const user = await this.findById(id);
+  const crop = await Crop.findById(args.id);
+  console.log(`user:${user}\n\n\n========`);
+  console.log(`crop:${crop}`);
+  // return user;
+}
 const User = mongoose.model('User', UserSchema);
 
 module.exports = User;

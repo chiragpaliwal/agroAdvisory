@@ -146,12 +146,36 @@ const getUserCrops = async (req, res) => {
   
 };
 
+//remove user crops
+const removeUserCrops =  async (req, res)=>{
+  console.log(req.body);
+  const crop = req.body;
+  const {userId} =req.params;
+  console.log(crop);
+  console.log("userId:"+userId);
+
+  if(!userId){
+      return res.status(400).json({error:true, message:"userId must be provided"});
+  }
+  await User.removeCrop(userId, crop);
+  return res.status(200).json({message:"test"});
+  // try {
+  //  const crops= await User.removeCrop(userId, crop); 
+  //    return res.status(201).json({error:false,success:true,crops,message:"crop removed"});
+  // } catch(e){
+  //  console.log(e.message);
+  //  return res.status(400).json({error: true, message:e.message});
+  // }
+};
+
 //-->routes api
 
 //create user crops
 router.post('/:userId/crops/new',createUserCrops);
 //get user crops
 router.get('/:userId/crops',getUserCrops);
+//remove user crops
+router.post('/:userId/crops/delete',removeUserCrops);
 //all users
 router.get('/allusers',async (req,res)=>{
   const users=await User.find({});

@@ -1,4 +1,72 @@
 const uid = document.getElementById("usid").innerText;
+const list = document.getElementById("cropList");
+//append list element function
+const _appendList= (text,textID,parent)=>{
+    const li=document.createElement("li");
+    const span = document.createElement("span");
+    const spanHidden = document.createElement("span");
+    const button = document.createElement("button");
+    const content= document.createTextNode(text);
+    const contentHidden= document.createTextNode(textID);
+    span.appendChild(content);
+    spanHidden.appendChild(contentHidden);
+    spanHidden.setAttribute("style","display:none");
+    button.setAttribute("style","float:right");
+    button.textContent="Delete";
+    button.className="deleteData";
+    button.addEventListener("click",(event)=>{
+        const list = document.getElementById("cropList");
+        let delnode = event.currentTarget;
+        console.log(list);
+        console.log(delnode.parentNode);
+        console.log(delnode.previousSibling.textContent);
+        let data = {id:delnode.previousSibling.textContent};
+        let urld =`/users/${uid}/crops/delete`; 
+        console.log(`delete:${urld}`);
+        console.log(data);
+        let options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        };
+         fetch(urld,options)
+        .then(res => res.json())
+        .then(res => {
+            //_appendList(res.crops[0].name,res.crops[0]._id,list);
+            //console.log(res.crops[0].name);
+            console.log(res);
+        })
+        .catch(error=>console.error(error));
+        //list.removeChild(delnode.parentNode);
+    });
+    li.appendChild(span);
+    li.appendChild(spanHidden);
+    li.appendChild(button);
+    parent.appendChild(li);
+}
+
+//create list
+const _createList = ()=>{
+    let urlg =`/users/${uid}/crops`;
+    fetch(urlg)
+    .then(res => res.json())
+    .then(res => {
+        if (list.childNodes.length===0){
+            for(let i=0;i<res.crops.length;i++)
+        {
+            _appendList(res.crops[i].crop.name,res.crops[i].crop._id,list);
+            //console.log(res.crops[i].crop.name);
+        }
+            //console.log(list.childNodes.length);
+        }
+        console.log(list.childNodes.length);
+        
+    })
+    .catch(error=>console.error(error));
+}
+
 $("#tosignup").click(function () {
     $("#loginform").slideToggle("slow");
     $("#signupform").delay(400).fadeToggle("slow");
@@ -52,16 +120,31 @@ $( ".cid" ).click(async function( event ) {
         },
         body: JSON.stringify(data)
     };
-    return await fetch(urlp,options).then(res => res.json()).then(res => console.log(res)).catch(error=>console.error(error));
+    return await fetch(urlp,options)
+    .then(res => res.json())
+    .then(res => {
+        _appendList(res.crops[0].name,res.crops[0]._id,list);
+        console.log(res.crops[0].name);
+        console.log(res.crops[0]._id);
+    })
+    .catch(error=>console.error(error));
 });
 
-$("#cropList").click((event)=>{
-    let now = event.currentTarget;
-    console.log(now);
+$(".deleteData").click(event=>{
+    let delnode = event.currentTarget;
+    console.log(list);
+    console.log(delnode.parentNode);
+    list.removeChild(delnode.parentNode);
+
+})
+
+$("#initCrop").click(event=>{
+    _createList();
 });
 
-$(".pcroplist").click((event)=>{
-    let now = event.currentTarget
-    console.log(now.childNodes);
+// $(".pcroplist").click((event)=>{
+//     let now = event.currentTarget
+//     console.log(now.childNodes);
+//     console.log(now);
 
-});
+// });
