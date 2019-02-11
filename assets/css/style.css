@@ -164,31 +164,31 @@ div.tabactive {
     grid-gap: 1em;
     grid-template-rows:repeat(auto-fit(minmax(260px,1fr))); 
 }
-.cropcards div{
+.cropcards li{
     padding: 1em;
     border-radius: 0.4em;
     background: linear-gradient(#D5E68D,#6BF178);
     display: flex;
     justify-content: space-around;
 }
-.cropcards div h2{
+.cropcards li h2{
     letter-spacing: 1px;
     color:whitesmoke;
 }
-.cropcards div p{
+.cropcards li p{
     opacity: 0.6;
     font-size: 0.8em;
 }
-.cropcards div img{
+.cropcards li img{
     height: 80px;
     width: 100px;
     float: left;
     border-radius: 0.4em;
 }
-.cropcards div span:nth-of-type(2){
+.cropcards li span:nth-of-type(2){
     text-align: center;
 }
-.cropcards div span button{
+.cropcards li span button{
     margin: 1em 0 0 0;
 }
 .home,.crops,.profile{

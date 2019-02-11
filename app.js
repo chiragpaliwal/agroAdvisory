@@ -51,11 +51,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Fetch crop data
-Crop.find().then(data => {
-  const cropData = data;
-});
-
 // Connect flash
 app.use(flash());
 

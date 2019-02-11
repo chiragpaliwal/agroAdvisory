@@ -11,12 +11,12 @@
 
 <div class="crops">
     <div class="search">
-        <input type="text" placeholder="search">
+        <input type="text" placeholder="Search" id="searchInput" onkeyup="search()">
         <button type="submit">go</button>
     </div>
-    <div class="cropcards">
+    <ul id="myUL" class="cropcards">
         <% cropData.forEach(crop => { %>
-        <div>
+        <li>
             <span>
                 <h2><%= crop.name %></h2>
                 <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
@@ -25,12 +25,9 @@
                 <img src="<%= crop.img %>" alt="">
                 <button class="cid" type="button">Add<span style="display:none"><%=crop.id%></span>
             </span>
-        </div>
+        </li>
        <% }); %>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
+    </ul>
 </div>
 
 <div class="profile">
@@ -43,6 +40,7 @@
             <span id="usid" style="display:none"><%=user.id%></span>
             <span>Location</span>
             <span>info</span>
+            <a href="/users/logout" class="btn btn-secondary">Logout</a>
         </div>
     </div>
     <div class="profilebottom">
@@ -58,4 +56,3 @@
     <div id="tocrops">Crops</div>
     <div id="toprofile" class="tabactive">Profile</div>
 </div>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
