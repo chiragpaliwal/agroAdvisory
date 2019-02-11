@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 // Load User model
 const User = require('../models/User');
+//load crop model
+const Crop = require('../models/Crop');
 
 // Login Page
 router.get('/login', (req, res) => res.render('welcome'));
@@ -89,6 +91,72 @@ router.get('/logout', (req, res) => {
   req.logout();
   req.flash('success_msg', 'You are logged out');
   res.redirect('/');
+});
+
+
+//-->api functions
+
+//functions create user crops
+const createUserCrops =  async (req, res)=>{
+   console.log(req.body);
+   const crop = req.body;
+   const {userId} =req.params;
+   console.log(crop);
+   console.log("userId:"+userId);
+
+   if(!userId){
+       return res.status(400).json({error:true, message:"userId must be provided"});
+   }
+   try {
+    const crops= await User.addCrop(userId, crop); 
+      return res.status(201).json({error:false,success:true,crops});
+   } catch(e){
+    console.log(e.message);
+    return res.status(400).json({error: true, message:e.message});
+   }
+};
+
+
+//get crops by user
+const getUserCrops = async (req, res) => {
+  console.log(req.params);
+  let { userId } = req.params;
+  console.log(userId);
+
+  if(!userId){
+      return res.status(400).json({ error: true, message: 'you need to provide userId' });
+  }
+
+  //search to see if crop exist
+  const user = await User.findById(userId);
+  
+  if(!user){
+      return res.status(400).json({ error: true, message: 'User does not exist' });
+  }
+  try{
+    const crop= await User.findById(userId).populate({path:'crops.crop',model:'Crop'});
+    return res.status(200).json({ 
+      error: false,
+      crops: crop.crops
+    });
+
+  } catch(e){
+    return res.status(400).json({ error: true, message: 'cannot fetch User' });
+  }
+  
+};
+
+//-->routes api
+
+//create user crops
+router.post('/:userId/crops/new',createUserCrops);
+//get user crops
+router.get('/:userId/crops',getUserCrops);
+//all users
+router.get('/allusers',async (req,res)=>{
+  const users=await User.find({});
+  console.log(users);
+  res.status(200).json({list:users});
 });
 
 module.exports = router;

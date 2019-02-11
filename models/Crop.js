@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const { Schema } = mongoose;
 const CropSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -9,7 +9,13 @@ const CropSchema = new mongoose.Schema({
     },
     suggestions: {
         type: Array
-    }
+    },
+    users:[{user:{
+      type:Schema.Types.ObjectId,
+      refs:'User',
+      unique: true,
+      dropDups:true
+    }}]
 });
 
 const Crop = mongoose.model('Crop', CropSchema);

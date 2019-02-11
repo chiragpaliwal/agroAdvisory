@@ -17,12 +17,13 @@
     <div class="cropcards">
         <div>
             <span>
-                <h2><%=  %></h2>
+                <h2><%= cropData[0].name %></h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </span>
-            <span>    
-                <img src="/img/wheat.jpg" alt="">
-                <button type="button">Add</button>
+            <span>
+                <img src="<%= cropData[0].img%>" alt=""/>
+                <button onclick="_handleAddCrop()" type="button">Add<span id="cid" style="display:none"><%=cropData[0].id%></span>
+                </button>
             </span>
         </div>
         <div></div>
@@ -38,6 +39,7 @@
         </div>
         <div class="info">
             <span><%= user.name %></span>
+            <span id="usid" style="display:none"><%=user.id%></span>
             <span>Location</span>
             <span>info</span>
         </div>
