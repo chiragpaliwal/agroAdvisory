@@ -23,7 +23,7 @@
             </span>
             <span>    
                 <img src="<%= crop.img %>" alt="">
-                <button type="button">Add</button>
+                <button class="cid" type="button">Add<span style="display:none"><%=crop.id%></span>
             </span>
         </div>
        <% }); %>
@@ -40,21 +40,22 @@
         </div>
         <div class="info">
             <span><%= user.name %></span>
+            <span id="usid" style="display:none"><%=user.id%></span>
             <span>Location</span>
             <span>info</span>
         </div>
     </div>
     <div class="profilebottom">
         <div class="pcroplist">
-            <p>My Crops</p>
-            <ul>
+            <p id = "cropList">My Crops</p>
+            <!-- <ul>
                 <li>crop1</li>
                 <li>crop2</li>
                 <li>crop3</li>
                 <li>crop4</li>
                 <li>crop5</li>
                 <li>crop6</li>
-            </ul>
+            </ul> -->
         </div>
     </div>
 </div>

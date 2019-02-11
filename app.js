@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const app = express();
 const Crop = require('./models/Crop');
 const cropData = null;
@@ -13,7 +15,9 @@ require('./config/passport')(passport);
 
 // DB Config
 const db = require('./config/keys').mongoURI;
-
+//body-parser config
+app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended:true}));
 // Connect to MongoDB
 mongoose
   .connect(
@@ -22,7 +26,8 @@ mongoose
   )
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
-
+//morgan setup
+app.use(morgan("dev"));
 // EJS
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
