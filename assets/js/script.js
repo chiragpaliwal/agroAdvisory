@@ -39,7 +39,7 @@ const _appendList= (text,textID,parent)=>{
             console.log(res);
         })
         .catch(error=>console.error(error));
-        //list.removeChild(delnode.parentNode);
+        list.removeChild(delnode.parentNode);
     });
     li.appendChild(span);
     li.appendChild(spanHidden);

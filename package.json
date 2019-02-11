@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "debug": "set DEBUG=express:* & node app.js"
+    "debug": "set DEBUG=express:* & node app.js",
+    "debug:hot": "set DEBUG=express:* & nodemon app.js"
   },
   "keywords": [],
   "author": "",
