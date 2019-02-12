@@ -1,4 +1,19 @@
-const uid = document.getElementById("usid").innerText;
+$(document).ready(function(){
+    $("#tosignup").click(function () {
+        console.log('test');
+        $("#loginform").slideToggle("slow");
+        $("#signupform").delay(400).fadeToggle("slow");
+    });
+    $("#tologin").click(function () {
+        $("#signupform").fadeToggle("fast");
+        $("#loginform").delay(200).slideToggle("slow");
+    });
+
+    $(".tabs>div").click(function () {
+        $(".tabs>div:not(this)").removeClass("tabactive");
+        $(this).addClass("tabactive");
+    });
+    const uid = document.getElementById("usid").innerText;
 const list = document.getElementById("cropList");
 const homeCards = document.getElementById("suggestionCards");
 //const homeCards = document.getElementsByID("homecards");
@@ -150,19 +165,6 @@ let removeCount=0;
         console.log(`no child nodes ${homeCards}`);
     }
 }
-$("#tosignup").click(function () {
-    $("#loginform").slideToggle("slow");
-    $("#signupform").delay(400).fadeToggle("slow");
-});
-$("#tologin").click(function () {
-    $("#signupform").fadeToggle("fast");
-    $("#loginform").delay(200).slideToggle("slow");
-});
-
-$(".tabs>div").click(function () {
-    $(".tabs>div:not(this)").removeClass("tabactive");
-    $(this).addClass("tabactive");
-});
 
 $("#tocrops").click(function () {
     $(".profile").fadeOut("fast");
@@ -294,3 +296,4 @@ function search() {
       }
     }
 }
+});

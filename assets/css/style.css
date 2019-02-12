@@ -160,10 +160,12 @@ div.tabactive {
 
 .cropcards{
     margin-top: 1em;
+    margin-left: -1em;
     display: grid;
     grid-gap: 1em;
     grid-template-rows:repeat(auto-fit(minmax(260px,1fr))); 
 }
+
 .cropcards li{
     padding: 1em;
     border-radius: 0.4em;
