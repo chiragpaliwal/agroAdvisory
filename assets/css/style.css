@@ -163,6 +163,8 @@ div.tabactive {
     margin-left: -1em;
     display: grid;
     grid-gap: 1em;
+    max-height: 76vh;
+    padding-left: 1em;
     grid-template-rows:repeat(auto-fit(minmax(260px,1fr))); 
 }
 
@@ -203,6 +205,8 @@ div.tabactive {
 .homecards{
     display: flex;
     flex-direction: column;
+    max-height: 78vh;
+    overflow-y: scroll;
 }
 .homecards div{
     margin: 1em;

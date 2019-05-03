@@ -157,8 +157,6 @@ const removeUserCrops =  async (req, res)=>{
   if(!userId){
       return res.status(400).json({error:true, message:"userId must be provided"});
   }
-  // await User.removeCrop(userId, crop);
-  // return res.status(200).json({message:"test"});
   try {
    const crops= await User.removeCrop(userId, crop); 
      return res.status(201).json({error:false,success:true,crops,message:"crop removed"});

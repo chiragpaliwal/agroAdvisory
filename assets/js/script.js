@@ -16,8 +16,7 @@ $(document).ready(function(){
     const uid = document.getElementById("usid").innerText;
 const list = document.getElementById("cropList");
 const homeCards = document.getElementById("suggestionCards");
-//const homeCards = document.getElementsByID("homecards");
-//append list element function
+
 const _appendList= (text,textID,parent,key)=>{
     const li=document.createElement("li");
     const span = document.createElement("span");
@@ -53,8 +52,6 @@ const _appendList= (text,textID,parent,key)=>{
          fetch(urld,options)
         .then(res => res.json())
         .then(res => {
-            //_appendList(res.crops[0].name,res.crops[0]._id,list);
-            //console.log(res.crops[0].name);
             console.log(res);
         })
         .catch(error=>console.error(error));
@@ -84,7 +81,6 @@ const _createList = ()=>{
             if(homeCards.childNodes.length<res.crops.length)
             {_createSuggestionCards(homeCards,res.crops[i].crop,i);}
         }
-            //console.log(list.childNodes.length);
         }
         console.log(list.childNodes.length);
 
@@ -241,8 +237,7 @@ $( ".cid" ).click(async function( event ) {
                 console.error(error);
             }
             );
-            // _createList();
-            // _appendList(res.crops[0].name,res.crops[0]._id,list,list.childNodes.length);
+        
         }else{
             _appendList(res.crops[0].name,res.crops[0]._id,list,list.childNodes.length);
         }
@@ -265,13 +260,6 @@ $(".deleteData").click(event=>{
 $("#initCrop").click(event=>{
     _createList();
 });
-
-// $(".pcroplist").click((event)=>{
-//     let now = event.currentTarget
-//     console.log(now.childNodes);
-//     console.log(now);
-
-// });
 
 
 // SEARCH 

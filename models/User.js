@@ -62,24 +62,13 @@ function cropUserArrayRemove(arr, value) {
       
   });
 }
-// var result = arrayRemove(array, 6);
 
 UserSchema.statics.removeCrop = async function (id,args){
   const Crop = mongoose.model('Crop');
   const user = await this.findById(id);
-  // const usercrops = await this.find({crops:args.id});
   const crop = await Crop.findById(args.id);
-  // const cropUserArr =user.crops;
-  // const userCropArr = crop.users;
-  console.log(id);
-  console.log(`user:${user.crops}\n\n\n========`);
-  console.log(`crop:${crop.users}\n\n\n\n=========`);
-  //console.log(`crop:${userCropArr[2].user}`);
   let resultUserCrop=userCropArrayRemove(crop.users,id);
-  console.log(`filtered array:${resultUserCrop}`);
   const resultCropUser = cropUserArrayRemove(user.crops,args.id);
-  console.log(`filtered array:${resultCropUser}`);  
-  // console.log(`crop:${usercrops}`);
   user.crops=resultCropUser;
   crop.users=resultUserCrop;
   const result = Promise.all([crop.save(),user.save()]);
